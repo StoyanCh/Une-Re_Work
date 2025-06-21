@@ -12,10 +12,10 @@ public class User_Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
-    private int u_role_id;
+    public int u_role_id;
 
     @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
-    private String u_role_name;
+    public String u_role_name;
 
     @ManyToMany
     @JoinTable(
@@ -23,7 +23,22 @@ public class User_Roles {
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
-    private Set<User_Permissions> permissions = new HashSet<>();
 
+    public Set<User_Permissions> permissions = new HashSet<>();
 
+    public int getU_role_id() {
+        return u_role_id;
+    }
+
+    public void setU_role_id(int u_role_id) {
+        this.u_role_id = u_role_id;
+    }
+
+    public String getU_role_name() {
+        return u_role_name;
+    }
+
+    public void setU_role_name(String u_role_name) {
+        this.u_role_name = u_role_name;
+    }
 }

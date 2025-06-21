@@ -47,4 +47,100 @@ public class Users {
 
     @Column(nullable = false,columnDefinition = "varchar(255)")
     public String user_email_address_personal;
+
+    public User_Roles getUser_role() {
+        return user_role;
+    }
+
+    public void setUser_role(User_Roles user_role) {
+        this.user_role = user_role;
+    }
+
+    public String getUser_first_name() {
+        return user_first_name;
+    }
+
+    public void setUser_first_name(String user_first_name) {
+        this.user_first_name = user_first_name;
+    }
+
+    public String getUser_second_name() {
+        return user_second_name;
+    }
+
+    public void setUser_second_name(String user_second_name) {
+        this.user_second_name = user_second_name;
+    }
+
+    public String getUser_last_name() {
+        return user_last_name;
+    }
+
+    public void setUser_last_name(String user_last_name) {
+        this.user_last_name = user_last_name;
+    }
+
+    public String getUser_egn() {
+        return user_egn;
+    }
+
+    public void setUser_egn(String user_egn) {
+        this.user_egn = user_egn;
+    }
+
+    public String getUser_id_card_num() {
+        return user_id_card_num;
+    }
+
+    public void setUser_id_card_num(String user_id_card_num) {
+        this.user_id_card_num = user_id_card_num;
+    }
+
+    public Date getUser_birthday() {
+        return user_birthday;
+    }
+
+    public void setUser_birthday(Date user_birthday) {
+        this.user_birthday = user_birthday;
+    }
+
+    public String getUser_address_by_id_card() {
+        return user_address_by_id_card;
+    }
+
+    public void setUser_address_by_id_card(String user_address_by_id_card) {
+        this.user_address_by_id_card = user_address_by_id_card;
+    }
+
+    public String getUser_address_current() {
+        return user_address_current;
+    }
+
+    public void setUser_address_current(String user_address_current) {
+        this.user_address_current = user_address_current;
+    }
+
+    public String getUser_photo_path() {
+        return user_photo_path;
+    }
+
+    public void setUser_photo_path(String user_photo_path) {
+        this.user_photo_path = user_photo_path;
+    }
+
+    public String getUser_phone_number() {
+        return user_phone_number;
+    }
+
+    public void setUser_phone_number(String user_phone_number) {
+        this.user_phone_number = user_phone_number;
+    }
+
+    public String getUser_email_address_personal() {
+        return user_email_address_personal;
+    }
+
+    public void setUser_email_address_personal(String user_email_address_personal) {
+        this.user_email_address_personal = user_email_address_personal;
+    }
 }

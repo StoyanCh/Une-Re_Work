@@ -25,7 +25,37 @@ public class Teachers {
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "academic_title_id")
     )
-    private Set<Academic_Titles> teacher_titles = new HashSet<>();
+    public Set<Academic_Titles> teacher_titles = new HashSet<>();
 
+    public Users getTeacher() {
+        return teacher;
+    }
 
+    public void setTeacher(Users teacher) {
+        this.teacher = teacher;
+    }
+
+    public Boolean getTeacher_status() {
+        return teacher_status;
+    }
+
+    public void setTeacher_status(Boolean teacher_status) {
+        this.teacher_status = teacher_status;
+    }
+
+    public String getTeacher_email_address_uni() {
+        return teacher_email_address_uni;
+    }
+
+    public void setTeacher_email_address_uni(String teacher_email_address_uni) {
+        this.teacher_email_address_uni = teacher_email_address_uni;
+    }
+
+    public Set<Academic_Titles> getTeacher_titles() {
+        return teacher_titles;
+    }
+
+    public void setTeacher_titles(Set<Academic_Titles> teacher_titles) {
+        this.teacher_titles = teacher_titles;
+    }
 }

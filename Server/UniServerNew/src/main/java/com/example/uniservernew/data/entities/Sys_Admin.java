@@ -18,9 +18,41 @@ public class Sys_Admin {
     public Date last_login;
 
     @Column(nullable = false)
-    private Boolean is_active;
+    public Boolean is_active;
 
     @Column(nullable = false)
     @CreationTimestamp
     public Date created_at;
+
+    public Users getSysAdmin() {
+        return sysAdmin;
+    }
+
+    public void setSysAdmin(Users sysAdmin) {
+        this.sysAdmin = sysAdmin;
+    }
+
+    public Date getLast_login() {
+        return last_login;
+    }
+
+    public void setLast_login(Date last_login) {
+        this.last_login = last_login;
+    }
+
+    public Boolean getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
 }
