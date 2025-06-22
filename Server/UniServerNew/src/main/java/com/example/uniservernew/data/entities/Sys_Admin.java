@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
+import java.util.Objects;
 
-@Entity(name = "sys_admin")
+@Entity
+@Table(name = "sys_admin")
 public class Sys_Admin {
 
     @Id
@@ -15,14 +17,17 @@ public class Sys_Admin {
 
     @Column(nullable = false)
     @CreationTimestamp
-    public Date last_login;
+    public Date lastLogin;
 
     @Column(nullable = false)
-    public Boolean is_active;
+    public Boolean isActive;
 
     @Column(nullable = false)
     @CreationTimestamp
-    public Date created_at;
+    public Date createdAt;
+
+    @Column(nullable = false)
+    public String sysAdminEmailAddress;
 
     public Users getSysAdmin() {
         return sysAdmin;
@@ -32,27 +37,47 @@ public class Sys_Admin {
         this.sysAdmin = sysAdmin;
     }
 
-    public Date getLast_login() {
-        return last_login;
+    public Date getLastLogin() {
+        return lastLogin;
     }
 
-    public void setLast_login(Date last_login) {
-        this.last_login = last_login;
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
     }
 
-    public Boolean getIs_active() {
-        return is_active;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setIs_active(Boolean is_active) {
-        this.is_active = is_active;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getSysAdminEmailAddress() {
+        return sysAdminEmailAddress;
+    }
+
+    public void setSysAdminEmailAddress(String sysAdminEmailAddress) {
+        this.sysAdminEmailAddress = sysAdminEmailAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Sys_Admin sysAdmin1 = (Sys_Admin) o;
+        return Objects.equals(sysAdmin, sysAdmin1.sysAdmin) && Objects.equals(lastLogin, sysAdmin1.lastLogin) && Objects.equals(isActive, sysAdmin1.isActive) && Objects.equals(createdAt, sysAdmin1.createdAt) && Objects.equals(sysAdminEmailAddress, sysAdmin1.sysAdminEmailAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sysAdmin, lastLogin, isActive, createdAt, sysAdminEmailAddress);
     }
 }

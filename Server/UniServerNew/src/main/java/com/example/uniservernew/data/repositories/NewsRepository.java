@@ -1,46 +1,30 @@
 package com.example.uniservernew.data.repositories;
 
 import com.example.uniservernew.data.entities.News;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface NewsRepository extends JpaRepository<News, Integer> {
+public interface NewsRepository extends JpaRepository<News, String> {
 
-    List<News> findByNews_titleContainingIgnoreCase(String keyword);
+    public News findByName(String name);
 
-    boolean existsByNews_title(String title);
+    public List<News> findAllByOrderBy(Date createdAt);
 
-    List<News> findByDate_of_publish(Date publishDate);
+    public List<News> findAllByOrderByCreatedAtDesc();
 
-    List<News> findByTopic_Tag_TagName(String topicName);
+    public List<News> findAllByOrderByCreatedAtAcs(Date createdAt);
 
-    @Query("SELECT n FROM news n WHERE  n.faculty.faculty_name = :faculty")
-    List<News> findByFaculty_FacultyName(String facultyName);
+    public List<News> findAllByTopic(String topic);
 
-    @Query("SELECT n FROM news n WHERE n.active = true AND n.faculty.faculty_name = :faculty")
-    List<News> findActiveNewsByFaculty(@Param("faculty") String facultyName);
+    public List<News> findAllByFaculty(String faculty);
 
-    List<News> findByAuthor_StudentDepartment(String department);
+    public News create(News news);
 
-    List<News> findByAuthor_Speciality(String speciality);
+    public News update(News news);
 
-
-    List<News> findByActiveTrue();
-
-    List<News> findByAuthor_User_id(int authorId);
-
-    @Modifying
-    @Transactional
-    @Query("UPDATE news n SET n.active = :active WHERE n.news_id = :id")
-    void updateNewsActiveStatus(@Param("id") int id, @Param("active") boolean active);
-
-    void deleteByNews_id(Integer id);
+    public News delete(String id);
 }

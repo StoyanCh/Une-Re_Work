@@ -2,25 +2,44 @@ package com.example.uniservernew.data.entities;
 
 import jakarta.persistence.*;
 
-@Entity(name = "topic_tag")
+import java.util.Objects;
+
+@Entity
+@Table(name = "topic_tag")
 public class Topic_Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int topic_tag_id;
+    private int topicTagId;
 
     @Column(nullable = false,updatable = false, columnDefinition = "varchar(255")
-    public String topic_tag_name;
+    public String topicTagName;
 
-    public int getTopic_tag_id() {
-        return topic_tag_id;
+    public int getTopicTagId() {
+        return topicTagId;
     }
 
-    public String getTopic_tag_name() {
-        return topic_tag_name;
+    public void setTopicTagId(int topicTagId) {
+        this.topicTagId = topicTagId;
     }
 
-    public void setTopic_tag_name(String topic_tag_name) {
-        this.topic_tag_name = topic_tag_name;
+    public String getTopicTagName() {
+        return topicTagName;
+    }
+
+    public void setTopicTagName(String topicTagName) {
+        this.topicTagName = topicTagName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Topic_Tag topicTag = (Topic_Tag) o;
+        return topicTagId == topicTag.topicTagId && Objects.equals(topicTagName, topicTag.topicTagName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(topicTagId, topicTagName);
     }
 }

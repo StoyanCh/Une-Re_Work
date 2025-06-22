@@ -3,144 +3,166 @@ package com.example.uniservernew.data.entities;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Objects;
 
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
-    public int user_id;
+    public int userid;
 
     @ManyToOne
     @JoinColumn(name = "user_role", nullable = false)
-    public User_Roles user_role;
+    private User_Role userRole;
 
-    @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
-    public String user_first_name;
+    @Column(updatable = false, nullable = false, columnDefinition = "varchar(255)")
+    public String userFirstName;
 
-    @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
-    public String user_second_name;
+    @Column(updatable = false, nullable = false, columnDefinition = "varchar(255)")
+    public String userSecondName;
 
-    @Column(nullable = false,columnDefinition = "varchar(255)")
-    public String user_last_name;
+    @Column(nullable = false, columnDefinition = "varchar(255)")
+    public String userLastName;
 
-    @Column(length = 10, updatable = false,nullable = false,columnDefinition = "varchar(10)")
-    public String user_egn;
+    @Column(length = 10, updatable = false, nullable = false, columnDefinition = "varchar(10)")
+    public String userEgn;
 
-    @Column(length = 8, nullable = false,columnDefinition = "varchar(8)")
-    public String user_id_card_num;
+    @Column(length = 8, nullable = false, columnDefinition = "varchar(8)")
+    public String userIdCardNum;
 
     @Column(updatable = false, nullable = false, columnDefinition = "date")
-    public Date user_birthday;
+    public Date userBirthday;
 
-    @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
-    public String user_address_by_id_card;
+    @Column(updatable = false, nullable = false, columnDefinition = "varchar(255)")
+    public String userAddressByIdCard;
 
-    @Column(nullable = false,columnDefinition = "varchar(255)")
-    public String user_address_current;
+    @Column(nullable = false, columnDefinition = "varchar(255)")
+    public String userAddressCurrent;
 
-    @Column(nullable = false,columnDefinition = "varchar(255)")
-    public String user_photo_path;
+    @Column(nullable = false, columnDefinition = "varchar(255)")
+    public String userPhotoPath;
 
-    @Column(nullable = false,columnDefinition = "varchar(255)")
-    public String user_phone_number;
+    @Column(nullable = false, columnDefinition = "varchar(255)")
+    public String userPhoneNumber;
 
-    @Column(nullable = false,columnDefinition = "varchar(255)")
-    public String user_email_address_personal;
+    @Column(nullable = false, columnDefinition = "varchar(255)")
+    public String emailAddressPersonal;
 
-    public User_Roles getUser_role() {
-        return user_role;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_role(User_Roles user_role) {
-        this.user_role = user_role;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public String getUser_first_name() {
-        return user_first_name;
+    public User_Role getUserRole() {
+        return userRole;
     }
 
-    public void setUser_first_name(String user_first_name) {
-        this.user_first_name = user_first_name;
+    public void setUserRole(User_Role userRole) {
+        this.userRole = userRole;
     }
 
-    public String getUser_second_name() {
-        return user_second_name;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public void setUser_second_name(String user_second_name) {
-        this.user_second_name = user_second_name;
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
     }
 
-    public String getUser_last_name() {
-        return user_last_name;
+    public String getUserSecondName() {
+        return userSecondName;
     }
 
-    public void setUser_last_name(String user_last_name) {
-        this.user_last_name = user_last_name;
+    public void setUserSecondName(String userSecondName) {
+        this.userSecondName = userSecondName;
     }
 
-    public String getUser_egn() {
-        return user_egn;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public void setUser_egn(String user_egn) {
-        this.user_egn = user_egn;
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
     }
 
-    public String getUser_id_card_num() {
-        return user_id_card_num;
+    public String getUserEgn() {
+        return userEgn;
     }
 
-    public void setUser_id_card_num(String user_id_card_num) {
-        this.user_id_card_num = user_id_card_num;
+    public void setUserEgn(String userEgn) {
+        this.userEgn = userEgn;
     }
 
-    public Date getUser_birthday() {
-        return user_birthday;
+    public String getUserIdCardNum() {
+        return userIdCardNum;
     }
 
-    public void setUser_birthday(Date user_birthday) {
-        this.user_birthday = user_birthday;
+    public void setUserIdCardNum(String userIdCardNum) {
+        this.userIdCardNum = userIdCardNum;
     }
 
-    public String getUser_address_by_id_card() {
-        return user_address_by_id_card;
+    public Date getUserBirthday() {
+        return userBirthday;
     }
 
-    public void setUser_address_by_id_card(String user_address_by_id_card) {
-        this.user_address_by_id_card = user_address_by_id_card;
+    public void setUserBirthday(Date userBirthday) {
+        this.userBirthday = userBirthday;
     }
 
-    public String getUser_address_current() {
-        return user_address_current;
+    public String getUserAddressByIdCard() {
+        return userAddressByIdCard;
     }
 
-    public void setUser_address_current(String user_address_current) {
-        this.user_address_current = user_address_current;
+    public void setUserAddressByIdCard(String userAddressByIdCard) {
+        this.userAddressByIdCard = userAddressByIdCard;
     }
 
-    public String getUser_photo_path() {
-        return user_photo_path;
+    public String getUserAddressCurrent() {
+        return userAddressCurrent;
     }
 
-    public void setUser_photo_path(String user_photo_path) {
-        this.user_photo_path = user_photo_path;
+    public void setUserAddressCurrent(String userAddressCurrent) {
+        this.userAddressCurrent = userAddressCurrent;
     }
 
-    public String getUser_phone_number() {
-        return user_phone_number;
+    public String getUserPhotoPath() {
+        return userPhotoPath;
     }
 
-    public void setUser_phone_number(String user_phone_number) {
-        this.user_phone_number = user_phone_number;
+    public void setUserPhotoPath(String userPhotoPath) {
+        this.userPhotoPath = userPhotoPath;
     }
 
-    public String getUser_email_address_personal() {
-        return user_email_address_personal;
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
     }
 
-    public void setUser_email_address_personal(String user_email_address_personal) {
-        this.user_email_address_personal = user_email_address_personal;
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
+    public String getEmailAddressPersonal() {
+        return emailAddressPersonal;
+    }
+
+    public void setEmailAddressPersonal(String emailAddressPersonal) {
+        this.emailAddressPersonal = emailAddressPersonal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Users users = (Users) o;
+        return userid == users.userid && Objects.equals(userRole, users.userRole) && Objects.equals(userFirstName, users.userFirstName) && Objects.equals(userSecondName, users.userSecondName) && Objects.equals(userLastName, users.userLastName) && Objects.equals(userEgn, users.userEgn) && Objects.equals(userIdCardNum, users.userIdCardNum) && Objects.equals(userBirthday, users.userBirthday) && Objects.equals(userAddressByIdCard, users.userAddressByIdCard) && Objects.equals(userAddressCurrent, users.userAddressCurrent) && Objects.equals(userPhotoPath, users.userPhotoPath) && Objects.equals(userPhoneNumber, users.userPhoneNumber) && Objects.equals(emailAddressPersonal, users.emailAddressPersonal);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userid, userRole, userFirstName, userSecondName, userLastName, userEgn, userIdCardNum, userBirthday, userAddressByIdCard, userAddressCurrent, userPhotoPath, userPhoneNumber, emailAddressPersonal);
     }
 }
