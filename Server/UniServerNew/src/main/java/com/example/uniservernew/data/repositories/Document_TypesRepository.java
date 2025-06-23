@@ -9,15 +9,8 @@ import java.util.List;
 @Repository
 public interface Document_TypesRepository extends JpaRepository<Document_Type, Integer> {
 
-    public List<Document_Type> findAllByOrderByIdDesc();
+    public Document_Type findByDocumentType(String documentType);
+    public List<Document_Type> findAllByOrderByDocumentTypeIdAsc();
 
-    public List<Document_Type> findAllByOrderByIdAsc();
-
-    public Document_Type findAllByOrderByIdDesc(Integer documentTypeId);
-
-    public Document_Type create(Document_Type documentType);
-
-    public Document_Type update(Document_Type documentType);
-
-    public void delete(Integer documentTypeId);
+    public List<Document_Type> findAllByOrderByDocumentTypeIdDesc();
 }

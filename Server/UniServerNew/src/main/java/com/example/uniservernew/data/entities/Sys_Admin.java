@@ -10,10 +10,14 @@ import java.util.Objects;
 @Table(name = "sys_admin")
 public class Sys_Admin {
 
-    @Id
+    @EmbeddedId
+    private SysAdminId sysAdminId;
+
+    @MapsId("userId")
     @ManyToOne
-    @JoinColumn(name = "admin_id")
-    public Users sysAdmin;
+    @JoinColumn(name = "admin_id", nullable = false)
+    private Users sysAdmin;
+
 
     @Column(nullable = false)
     @CreationTimestamp
@@ -28,6 +32,14 @@ public class Sys_Admin {
 
     @Column(nullable = false)
     public String sysAdminEmailAddress;
+
+    public SysAdminId getSysAdminId() {
+        return sysAdminId;
+    }
+
+    public void setSysAdminId(SysAdminId sysAdminId) {
+        this.sysAdminId = sysAdminId;
+    }
 
     public Users getSysAdmin() {
         return sysAdmin;
@@ -73,11 +85,11 @@ public class Sys_Admin {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Sys_Admin sysAdmin1 = (Sys_Admin) o;
-        return Objects.equals(sysAdmin, sysAdmin1.sysAdmin) && Objects.equals(lastLogin, sysAdmin1.lastLogin) && Objects.equals(isActive, sysAdmin1.isActive) && Objects.equals(createdAt, sysAdmin1.createdAt) && Objects.equals(sysAdminEmailAddress, sysAdmin1.sysAdminEmailAddress);
+        return Objects.equals(sysAdminId, sysAdmin1.sysAdminId) && Objects.equals(sysAdmin, sysAdmin1.sysAdmin) && Objects.equals(lastLogin, sysAdmin1.lastLogin) && Objects.equals(isActive, sysAdmin1.isActive) && Objects.equals(createdAt, sysAdmin1.createdAt) && Objects.equals(sysAdminEmailAddress, sysAdmin1.sysAdminEmailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sysAdmin, lastLogin, isActive, createdAt, sysAdminEmailAddress);
+        return Objects.hash(sysAdminId, sysAdmin, lastLogin, isActive, createdAt, sysAdminEmailAddress);
     }
 }

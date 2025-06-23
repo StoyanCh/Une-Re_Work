@@ -1,6 +1,8 @@
 package com.example.uniservernew.data.repositories;
 
+import com.example.uniservernew.data.entities.Faculty;
 import com.example.uniservernew.data.entities.News;
+import com.example.uniservernew.data.entities.Topic_Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,21 +12,18 @@ import java.util.List;
 @Repository
 public interface NewsRepository extends JpaRepository<News, String> {
 
-    public News findByName(String name);
+    public List<News> findByDateOfPublishBetween(Date start, Date end);
 
-    public List<News> findAllByOrderBy(Date createdAt);
+    public List<News> findByDateOfPublishAfter(Date start);
+    
+    public List<News> findByDateOfPublishBefore(Date end);
 
-    public List<News> findAllByOrderByCreatedAtDesc();
+    List<News> findByTopic(Topic_Tag topic);
 
-    public List<News> findAllByOrderByCreatedAtAcs(Date createdAt);
+    List<News> findByFaculty(Faculty faculty);
 
-    public List<News> findAllByTopic(String topic);
+    public News findBynewsTitle(String newsTitle);
 
-    public List<News> findAllByFaculty(String faculty);
-
-    public News create(News news);
-
-    public News update(News news);
-
-    public News delete(String id);
+    List<News> findByAuthor_UserFirstName(String authorUserFirstName);
+    List<News> findByAuthor_UserLastName(String authorUserLastName);
 }

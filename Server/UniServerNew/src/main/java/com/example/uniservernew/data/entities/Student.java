@@ -4,15 +4,17 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.Objects;
-
 @Entity
 @Table(name = "students")
 public class Student {
 
-    @Id
+    @EmbeddedId
+    private StudentId studentId;
+
+    @MapsId("userId")
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    public Users student;
+    @JoinColumn(name = "student_id", nullable = false)
+    private Users student;
 
     @Column(updatable = false, nullable = false, columnDefinition = "date")
     public Date yearOfEnrolling;
@@ -26,6 +28,14 @@ public class Student {
 
     @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
     public String studentEmailAddressUni;
+
+    public StudentId getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(StudentId studentId) {
+        this.studentId = studentId;
+    }
 
     public Users getStudent() {
         return student;
@@ -70,12 +80,12 @@ public class Student {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(this.student, student.student) && Objects.equals(yearOfEnrolling, student.yearOfEnrolling) && Objects.equals(speciality, student.speciality) && Objects.equals(facultyNumber, student.facultyNumber) && Objects.equals(studentEmailAddressUni, student.studentEmailAddressUni);
+        Student student1 = (Student) o;
+        return Objects.equals(studentId, student1.studentId) && Objects.equals(student, student1.student) && Objects.equals(yearOfEnrolling, student1.yearOfEnrolling) && Objects.equals(speciality, student1.speciality) && Objects.equals(facultyNumber, student1.facultyNumber) && Objects.equals(studentEmailAddressUni, student1.studentEmailAddressUni);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, yearOfEnrolling, speciality, facultyNumber, studentEmailAddressUni);
+        return Objects.hash(studentId, student, yearOfEnrolling, speciality, facultyNumber, studentEmailAddressUni);
     }
 }

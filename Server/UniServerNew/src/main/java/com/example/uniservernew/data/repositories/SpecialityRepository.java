@@ -1,22 +1,16 @@
 package com.example.uniservernew.data.repositories;
 
+import com.example.uniservernew.data.entities.Speciality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface SpecialityRepository extends JpaRepository<SpecialityRepository, Integer> {
-    public SpecialityRepository findByName(String name);
+public interface SpecialityRepository extends JpaRepository<Speciality, Integer> {
 
-    public Optional<SpecialityRepository> findById(Integer id);
+    public Speciality findByspecialityName(String specialityName);
 
-    public SpecialityRepository save(SpecialityRepository speciality);
+    public List<Speciality> findAllByOrderBySpecialityNameAsc();
 
-    public SpecialityRepository update(SpecialityRepository speciality);
-
-    public void delete(SpecialityRepository speciality);
-
-    public List<SpecialityRepository> findAllByStudentDepartment(String department);
+    public List<Speciality> findAllByOrderBySpecialityNameDesc();
 }

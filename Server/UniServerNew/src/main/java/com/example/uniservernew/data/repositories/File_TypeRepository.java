@@ -8,13 +8,6 @@ import java.util.List;
 
 @Repository
 public interface File_TypeRepository extends JpaRepository<File_Type, String> {
-    public List<File_Type> findByFile_TypeName(String file_TypeName);
 
-    public File_Type findFile_TypeById(String file_TypeId);
-
-    public File_Type createFile_Type(String file_TypeName);
-
-    public File_Type updateFile_Type(String file_TypeName);
-
-    public void deleteFile_Type(String file_TypeName);
+    public File_Type findByFileType(String file_TypeName);
 }

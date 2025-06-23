@@ -1,27 +1,26 @@
 package com.example.uniservernew.data.repositories;
 
+import com.example.uniservernew.data.entities.File_Type;
+import com.example.uniservernew.data.entities.Files;
+import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 
 @Repository
-public interface FilesRepository extends JpaRepository<FilesRepository, String> {
+public interface FilesRepository extends JpaRepository<Files, String> {
+    public Files findByfileTitle(String fileTitle);
 
-    public FilesRepository findByFileName(String fileName);
+    public List<Files> findByUploaderUserFirstName(String userFirstName);
 
-    public List<FilesRepository> findByUploadedBy(String uploadedBy);
+    public List<Files> findByUploaderUserLastName(String userLastName);
 
-    public FilesRepository findByFileType(String fileType);
+    List<Files> findByUploadedDateGreaterThan(Date uploadedDateIsGreaterThan);
 
-    public FilesRepository create(FilesRepository files);
+    List<Files> findByUploadedDateLessThan(Date uploadedDateIsLessThan);
 
-    public FilesRepository update(FilesRepository files);
-
-    public FilesRepository deleteByFileID(Integer fileID);
-
-
-
-
+    List<Files> findByfileType(Files fileType);
 }

@@ -10,15 +10,19 @@ import java.util.Set;
 @Table(name = "teachers")
 public class Teacher {
 
-    @Id
+    @EmbeddedId
+    private TeacherId teacherId;
+
+    @MapsId("userId")
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    public Users teacher;
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Users teacher;
+
 
     @Column(nullable = false)
     public Boolean teacherStatus;
 
-    @Column(updatable = false,nullable = false,columnDefinition = "varchar(255)")
+    @Column(updatable = false, nullable = false, columnDefinition = "varchar(255)")
     public String teacherEmailAddressUni;
 
     @ManyToMany
@@ -28,6 +32,15 @@ public class Teacher {
             inverseJoinColumns = @JoinColumn(name = "academic_title_id")
     )
     public Set<Academic_Title> teacherTitles = new HashSet<>();
+
+
+    public TeacherId getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(TeacherId teacherId) {
+        this.teacherId = teacherId;
+    }
 
     public Users getTeacher() {
         return teacher;
@@ -61,15 +74,16 @@ public class Teacher {
         this.teacherTitles = teacherTitles;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Teacher teacher = (Teacher) o;
-        return Objects.equals(this.teacher, teacher.teacher) && Objects.equals(teacherStatus, teacher.teacherStatus) && Objects.equals(teacherEmailAddressUni, teacher.teacherEmailAddressUni) && Objects.equals(teacherTitles, teacher.teacherTitles);
+        Teacher teacher1 = (Teacher) o;
+        return Objects.equals(teacherId, teacher1.teacherId) && Objects.equals(teacher, teacher1.teacher) && Objects.equals(teacherStatus, teacher1.teacherStatus) && Objects.equals(teacherEmailAddressUni, teacher1.teacherEmailAddressUni) && Objects.equals(teacherTitles, teacher1.teacherTitles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(teacher, teacherStatus, teacherEmailAddressUni, teacherTitles);
+        return Objects.hash(teacherId, teacher, teacherStatus, teacherEmailAddressUni, teacherTitles);
     }
 }
