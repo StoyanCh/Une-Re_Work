@@ -12,7 +12,7 @@ import java.util.Date;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 
-    Optional<Users> findByUserEgn(String userEgn);
+    public Optional<Users> findByUserEgn(String userEgn);
 
     List<Users> findByUserRole_RoleName(String roleName); // роля по име
 
